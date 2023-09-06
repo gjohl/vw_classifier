@@ -14,7 +14,8 @@ layout: page
     const json = await response.json();
     const label = json['data'][0]['confidences'][0]['label'];
     const confidence = json['data'][0]['confidences'][0]['confidence'].toFixed(3) * 100;
-    results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label} ${confidence}</p>`
+    const confidence_str = confidence.toString() + '%'
+    results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label} ${confidence_str}</p>`
   }
   function read() {
     const reader = new FileReader();
