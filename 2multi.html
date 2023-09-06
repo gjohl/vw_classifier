@@ -11,8 +11,9 @@ layout: page
       headers: { "Content-Type": "application/json" }
     });
     const json = await response.json();
-    const label = json['data'][0]['confidences'][0]['label'];
-    const confidence = json['data'][0]['confidences'][0]['confidence'].toFixed(3) * 100;
+    const prediction = json['data'][0]['confidences'][0];
+    const label = prediction['label'];
+    const confidence = prediction['confidence'].toFixed(3) * 100;
     const confidence_str = confidence.toString() + '%';
     const div = document.createElement('div');
     div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label} ${confidence_str}</p>`
